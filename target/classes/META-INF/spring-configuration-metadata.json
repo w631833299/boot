@@ -1,0 +1,34 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.wx.boot.util.RedisBean",
+      "name": "spring.redis.shiro",
+      "type": "com.wx.boot.util.RedisBean"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.wx.boot.util.RedisBean",
+      "name": "spring.redis.shiro.host",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.wx.boot.util.RedisBean",
+      "name": "spring.redis.shiro.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.wx.boot.util.RedisBean",
+      "defaultValue": 0,
+      "name": "spring.redis.shiro.port",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.wx.boot.util.RedisBean",
+      "defaultValue": 0,
+      "name": "spring.redis.shiro.timeout",
+      "type": "java.lang.Integer"
+    }
+  ]
+}
