@@ -11,7 +11,7 @@ public class UserInfo implements Serializable {
     private Integer uid;
 
     /**账号*/
-    private String username;//帐号
+    private String username;
 
     /**名称（昵称或者真实姓名，不同系统不同定义）*/
     private String name;
@@ -74,8 +74,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * 密码盐.
-     *
+     * 组装加密盐
      * @return
      */
     public String getCredentialsSalt() {
