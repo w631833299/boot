@@ -1,6 +1,5 @@
 package com.wx.boot.redis;
 
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -17,10 +16,9 @@ public class RedisConfig{
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @Test
-    public void test(){
+    public String test(){
         ValueOperations<String,String> valueOperations = stringRedisTemplate.opsForValue();
         valueOperations.set("mykey4","random1="+Math.random());
-        System.out.println(valueOperations.get("mykey4"));
+        return valueOperations.get("mykey4");
     }
 }
