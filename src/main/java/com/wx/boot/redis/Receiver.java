@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * @Description: TODO 请用一句话说明作用
+ * @Description: 接收redis通知信息
  * @Company:重庆壹平方米网络科技有限公司
  * @Date: 2018/9/21
  * @Auther: wangxiang
