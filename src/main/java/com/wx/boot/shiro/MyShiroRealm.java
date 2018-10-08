@@ -40,11 +40,11 @@ public class MyShiroRealm extends AuthorizingRealm {
 
     /**
      * doGetAuthenticationInfo的重写
+     * 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。
      * @param token
      * @return
      * @throws AuthenticationException
      */
-    /*主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。*/
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
             throws AuthenticationException {
