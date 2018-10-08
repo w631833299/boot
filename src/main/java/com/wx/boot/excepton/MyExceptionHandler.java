@@ -12,8 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 自定义异常
- */
+ * @author:  wx
+ * @Description: 自定义异常
+ * @Date: 2018/10/8
+ * @Version: v1.0
+ **/
 public class MyExceptionHandler implements HandlerExceptionResolver {
 
     /**
