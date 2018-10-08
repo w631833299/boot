@@ -1,4 +1,4 @@
-package com.wx.boot.util;
+package com.wx.boot.shiro;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -7,7 +7,8 @@ import org.springframework.stereotype.Component;
  * 获取配置文件redis配置信息
  */
 @Component
-@ConfigurationProperties(prefix ="spring.redis.shiro")
+//@ConfigurationProperties(prefix ="spring.redis.shiro")
+@ConfigurationProperties(prefix ="spring.redis")
 public class RedisBean {
 
     //地址

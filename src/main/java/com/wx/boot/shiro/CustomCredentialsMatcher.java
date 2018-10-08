@@ -1,4 +1,4 @@
-package com.wx.boot.util;
+package com.wx.boot.shiro;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

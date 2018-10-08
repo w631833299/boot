@@ -1,4 +1,4 @@
-package com.wx.boot.util;
+package com.wx.boot.shiro;
 
 import com.wx.boot.bean.UserInfo;
 import org.apache.shiro.authc.*;

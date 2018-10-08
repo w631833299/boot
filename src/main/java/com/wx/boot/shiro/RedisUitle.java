@@ -1,4 +1,4 @@
-package com.wx.boot.util;
+package com.wx.boot.shiro;
 
 import org.crazycake.shiro.RedisCacheManager;
 import org.crazycake.shiro.RedisManager;

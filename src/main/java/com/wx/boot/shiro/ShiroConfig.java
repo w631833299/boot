@@ -1,4 +1,4 @@
-package com.wx.boot.util;
+package com.wx.boot.shiro;
 
 import com.wx.boot.excepton.MyExceptionHandler;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
