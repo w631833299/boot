@@ -2,6 +2,7 @@ package com.wx.boot.web;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wx.boot.bean.UserInfo;
+import com.wx.boot.enums.ENUM_EXCEPTION;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -35,18 +36,19 @@ public class LongIn {
         try {
             subject.login(token);
             jsonObject.put("token", subject.getSession().getId());
-            jsonObject.put("msg", "登录成功");
+            jsonObject.put("msg",ENUM_EXCEPTION.E10000.msg);
         } catch (IncorrectCredentialsException e) {
-            e.printStackTrace();
-            jsonObject.put("msg", "密码错误");
+//            e.printStackTrace();
+            jsonObject.put("msg",ENUM_EXCEPTION.E10001.msg);
         } catch (LockedAccountException e) {
-            e.printStackTrace();
-            jsonObject.put("msg", "登录失败，该用户已被冻结");
+//            e.printStackTrace();
+            jsonObject.put("msg",ENUM_EXCEPTION.E10002.msg);
         } catch (AuthenticationException e) {
-            e.printStackTrace();
-            jsonObject.put("msg", "该用户不存在");
+//            e.printStackTrace();
+            jsonObject.put("msg",ENUM_EXCEPTION.E10003.msg);
         } catch (Exception e) {
             e.printStackTrace();
+            jsonObject.put("msg",ENUM_EXCEPTION.E10004.msg);
         }
         return jsonObject.toString();
     }
@@ -61,7 +63,6 @@ public class LongIn {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("code", "1000000");
         map.put("msg", "未登录");
-//        SecurityUtils.getSubject();
         return map;
     }
 }
