@@ -1,5 +1,7 @@
 package com.wx.boot.shiro;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -7,8 +9,9 @@ import org.springframework.stereotype.Component;
  * 获取配置文件redis配置信息
  */
 @Component
-//@ConfigurationProperties(prefix ="spring.redis.shiro")
-@ConfigurationProperties(prefix ="spring.redis")
+@ConfigurationProperties(prefix ="spring.redis") //获取配置文件前缀，属性表示配置文件后缀
+@Getter
+@Setter
 public class RedisBean {
 
     //地址
@@ -20,38 +23,10 @@ public class RedisBean {
     //连接时间
     private int timeout;
 
+    //缓存过期时间
+    private int expire;
+
     //密码
     private String password;
 
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public int getTimeout() {
-        return timeout;
-    }
-
-    public void setTimeout(int timeout) {
-        this.timeout = timeout;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

@@ -27,10 +27,9 @@ public class RedisUitle {
         RedisManager redisManager = new RedisManager();
         redisManager.setHost( redisBean.getHost());
         redisManager.setPort(redisBean.getPort());
-        // 配置缓存过期时间
-        redisManager.setExpire(1800);
         redisManager.setTimeout(redisBean.getTimeout());
         redisManager.setPassword(redisBean.getPassword());
+        redisManager.setExpire(redisBean.getExpire());
         return redisManager;
     }
 
