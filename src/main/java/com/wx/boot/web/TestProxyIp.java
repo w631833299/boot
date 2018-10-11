@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,15 +18,24 @@ import java.util.Map;
  */
 public class TestProxyIp {
     public static void main(String[] args) {
-        // 如果不设置，只要代理IP和代理端口正确,此项不设置也可以
-        System.getProperties().setProperty("http.proxyHost", "115.223.244.218");
-        System.getProperties().setProperty("http.proxyPort", "9000");
-        // 判断代理是否设置成功
-        // 发送 GET 请求
-        System.out.println(sendGet(
-                "https://v.qq.com/x/page/i03208kyb9f.html",
-                ""));
-        // 发送 POST 请求
+        Map<String,String> ips = new HashMap <>(  );
+        ips.put("121.31.158.14","8123");
+        ips.put("124.235.181.175","80");
+        ips.put("106.75.226.36","808");
+        ips.put("106.75.164.15","3128");
+        ips.put("118.190.95.35","9001");
+        ips.put("61.135.217.7","80");
+        ips.put("61.138.33.20","808");
+
+        for (String key : ips.keySet()){
+            // 如果不设置，只要代理IP和代理端口正确,此项不设置也可以
+            System.getProperties().setProperty("http.proxyHost", key);
+            System.getProperties().setProperty("http.proxyPort", ips.get(key));
+            // 判断代理是否设置成功
+            // 发送 GET 请求
+            System.out.println(sendGet("https://v.qq.com/x/page/i03208kyb9f.html",""));
+            // 发送 POST 请求
+        }
     }
 
     /**
@@ -52,7 +62,6 @@ public class TestProxyIp {
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
             // 建立实际的连接
             connection.connect();
-            System.err.println(System.getProperties().getProperty( "http.proxyHost" ));
             // 获取所有响应头字段
             Map<String, List<String>> map = connection.getHeaderFields();
             // 遍历所有的响应头字段
@@ -75,6 +84,7 @@ public class TestProxyIp {
             try {
                 if (in != null) {
                     in.close();
+                    System.err.println("请求成功+1");
                 }
             } catch (Exception e2) {
                 e2.printStackTrace();
