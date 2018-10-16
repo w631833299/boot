@@ -109,6 +109,16 @@
 			<artifactId>java-sdk</artifactId>
 			<version>4.1.1</version>
 		</dependency>
+
+		<!-- 下面两个引入为了操作数据库 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
