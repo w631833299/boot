@@ -21,7 +21,7 @@ public class MySessionManager extends DefaultWebSessionManager {
     }
 
     /**
-     * 获取sessionid
+     * 获取sessionid,可从cookie中获取token
      * @param request
      * @param response
      * @return

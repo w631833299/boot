@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 /**
- * @Description: TODO 请用一句话说明作用
+ * @Description: 用户业务处理类
  * @Company:重庆壹平方米网络科技有限公司
  * @Date: 2018/10/17
  * @Auther: wangxiang
@@ -25,7 +25,7 @@ import javax.transaction.Transactional;
 @Transactional
 public class UserInfoService {
 
-    //用是dao
+    //用户dao
     @Autowired
     private UserInfoDao userInfoDao;
 

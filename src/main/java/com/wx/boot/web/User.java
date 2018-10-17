@@ -1,24 +1,32 @@
 package com.wx.boot.web;
 
+import com.wx.boot.util.ControllerTool.AuthorizedController;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 
 /**
- * @Description: TODO 请用一句话说明作用
+ * @Description: 用户业务处理类
  * @Company:重庆壹平方米网络科技有限公司
  * @Date: 2018/10/8
  * @Auther: wangxiang
  */
 @RestController
-public class User {
+public class User extends AuthorizedController {
 
     @RequestMapping(value = "/test")
-    @ResponseBody
+    @RequiresPermissions("user_test")
+//    @ReturnMapping1(mapping="/test",exclude="user_test")
     public String test() {
         return "访问成功";
+    }
+
+    @RequestMapping(value = "/register")
+    @RequiresPermissions("user_register")
+    public String register(){
+        return "2222";
     }
 
     public static void main(String[] args) {
