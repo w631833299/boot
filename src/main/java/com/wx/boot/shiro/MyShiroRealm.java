@@ -1,6 +1,7 @@
 package com.wx.boot.shiro;
 
 import com.wx.boot.bean.UserInfo;
+import com.wx.boot.service.UserInfoService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -8,13 +9,14 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.Random;
 
 public class MyShiroRealm extends AuthorizingRealm {
 
     /**用户业务处理类*/
-//    @Resource
-//    private UserInfoService userInfoService;
+    @Resource
+    private UserInfoService userInfoService;
 
     /**
      * shiro的权限授权是通过继承AuthorizingRealm抽象类，重载doGetAuthorizationInfo();
@@ -56,11 +58,7 @@ public class MyShiroRealm extends AuthorizingRealm {
         //实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
 
         //根据账号查询数据库，返回账号对象
-//        UserInfo userInfo = userInfoService.findByUsername(username);
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUsername("wx");
-        userInfo.setPassword("CpievEp3tWpuK7exnZldGFzkQJDBPimEt+zG1EbUth6pmRt2pMLwSxtNJEhBRJRU");//密码明文是123456
-        userInfo.setSalt("wxKYXuTPST5SG0jMQzVPsg==");//加密密码的盐值
+        UserInfo userInfo = userInfoService.findByUsername(username);
         userInfo.setUid(new Random().nextInt());//随机分配一个id
         if (userInfo == null) {
             return null;
@@ -72,7 +70,7 @@ public class MyShiroRealm extends AuthorizingRealm {
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                 userInfo, //用户名
                 userInfo.getPassword(), //密码
-                ByteSource.Util.bytes(userInfo.getPassword()),//salt=username+salt
+                ByteSource.Util.bytes(userInfo.getCredentialsSalt()),//salt=username+salt  密盐
                 getName()  //realm name
         );
         return authenticationInfo;

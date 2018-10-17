@@ -1,14 +1,10 @@
 package com.wx.boot.web;
 
-import com.alibaba.fastjson.JSONObject;
 import com.wx.boot.bean.UserInfo;
-import com.wx.boot.enums.ENUM_EXCEPTION;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
+import com.wx.boot.service.UserInfoService;
+import com.wx.boot.util.ObjectHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +15,10 @@ import java.util.Map;
 @RestController
 public class LongIn {
 
+    //用户业务类
+    @Autowired
+    private UserInfoService userInfoService;
+
     /**
      * 登录方法
      * @param
@@ -26,31 +26,14 @@ public class LongIn {
      */
     @RequestMapping(value = "/ajaxLogin")
     @ResponseBody
-    public String ajaxLogin() {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUsername("wx");
-        userInfo.setPassword("123456");//密码明文是123456
-        JSONObject jsonObject = new JSONObject();
-        Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(userInfo.getUsername(), userInfo.getPassword());
-        try {
-            subject.login(token);
-            jsonObject.put("token", subject.getSession().getId());
-            jsonObject.put("msg",ENUM_EXCEPTION.E10000.msg);
-        } catch (IncorrectCredentialsException e) {
-//            e.printStackTrace();
-            jsonObject.put("msg",ENUM_EXCEPTION.E10001.msg);
-        } catch (LockedAccountException e) {
-//            e.printStackTrace();
-            jsonObject.put("msg",ENUM_EXCEPTION.E10002.msg);
-        } catch (AuthenticationException e) {
-//            e.printStackTrace();
-            jsonObject.put("msg",ENUM_EXCEPTION.E10003.msg);
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsonObject.put("msg",ENUM_EXCEPTION.E10004.msg);
+    public String ajaxLogin(@RequestBody(required = false) UserInfo userInfo) {
+        if(ObjectHelper.isEmpty( userInfo )){
+            //测试账号
+            userInfo = new UserInfo();
+            userInfo.setUsername("wx");
+            userInfo.setPassword("123456");//密码明文是123456
         }
-        return jsonObject.toString();
+        return userInfoService.ajaxLogin(userInfo);
     }
 
     /**

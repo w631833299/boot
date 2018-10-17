@@ -29,7 +29,7 @@ public class UserInfo implements Serializable {
     private String name;
 
     /**密码*/
-    @Column(name = "password", columnDefinition = "varchar(50) comment '密码'")
+    @Column(name = "password", columnDefinition = "varchar(100) comment '密码'")
     private String password;
 
     /**加密密码的盐*/

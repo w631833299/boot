@@ -1,4 +1,4 @@
-package com.wx.boot.excepton;
+package com.wx.boot.util.excepton;
 
 import com.alibaba.fastjson.support.spring.FastJsonJsonView;
 import org.apache.shiro.authz.UnauthenticatedException;
